@@ -1,0 +1,271 @@
+:root{ /*elemento que no esta en el documento HTML, se usa para definir algunas variables que se usaran en la pagina custom propieties*/
+    --blanco:#ffffff;/*variable de CSS*/
+    --negro:#000000;
+    --primario:#ffc107;
+    --secundario:#0097a7;
+    --gris:#757575;
+    --grisClaro:#dfe9f3;
+} 
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;/*CSS border-box organiza mejor los elementos cuando se les aplica un tamaño (height, padding, border, margin)*/
+    scroll-snap-type: y mandatory;/*se usa para dar propiedades al scroll, en este caso es para que salte en tre secciones (header, main y contacto)*/
+}
+
+*, *:before, *:after { /* esto hace parte de border-box. Asterizco sirve para seleccionar todos los elementos del documento HTML*/
+    box-sizing: inherit;
+}
+
+body{
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;/*krub es la fuente que se exporte de google font*/ 
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco));/*linear gradiant se usa para crear degradados (hacia donde va el degradado [to top=hacia arriba], depsues el color y donde inicia ese color en porcentage 0% es abajo, despues hacia que color va a ir y donde va a terminar 100% es arriba*/
+}
+
+h1{
+    font-size: 3.8rem;/*1rem=10px*/
+}
+
+h2{
+    font-size: 2.8rem;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+.sombra{
+    -webkit-box-shadow: 0px 0px 14px 1px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 14px 1px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 14px 1px rgba(0,0,0,0.4);
+    background-color: var(--blanco);
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+}
+
+.titulo{
+    color:var(--negro);/*var se usa para llamar variable de CSS*/
+    font-weight: 700;/*es el grosor de la fuente en este caso la que se exporto de google fonts es 400 y 700. Cuando se pone normal= 400 y bold=700 */
+}
+
+.titulo span{/*aca de esta accediendo a uno de los elementos hijos de la clase titulo*/
+    font-size: 2rem;
+}
+
+.navegacion_principal{
+    display: flex; /*flex sirve para acomodar de mejor forma los elementos, se tiene que buscar el elemento que contiene lo que se quiere alinear, en este caso es la etiqueta nav con clase navegacion_principal*/
+    flex-direction: column;/*es la direccion en la que se puede acomodar, en este caso es en filas o horizontalmente, tambien se puede acomodar en columnas(column)*. Row fila, biene por default, no es ncesario poner esta linea de cogigo*/
+}
+
+@media (min-width:768px){/*con esto se hace uso de los media querys para hacer la pagina responsive. En este caso se usa para una pantalla de 480px */
+    .navegacion_principal{/*cuando la pantalla sea mas grande que 768px entonces se aplicaran los cambios */
+        flex-direction: row;
+        justify-content: space-between;/*se habilita cuando se llama a flex. Perimite mover horizontalmente los elementos*/
+
+    }
+}
+
+.navegacion_principal a{
+    display: block;/*diplay es la forme en que el elemento va a ocupar el espacio en el documento html */
+    text-align: center;
+    padding: 1rem;/*aumente el ancho del elemento. Pading contiene el pading top,right, botton y left respectivamente igual que el margin*/
+    color: var(--blanco);  
+    text-decoration: none;  /*decoracion del texto, en este caso la quita*/
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.navegacion_principal a:hover{ /*eventos de css, pseudo clases, clases que se crean al momento que se detecta una accion del usuario. Hover es cuando el cursos pasa por encima de enlace*/
+    background-color: var(--primario);
+    color: var(--negro);
+}
+
+.contenedor{
+    max-width: 120rem;/*grosor del elemento*/
+    margin-top: 0;/*margenes en que posicion se va a colocar cada elemento. Agregan separacion entre cada elemento, en este caso entre el nav y el header*/
+    margin-right: auto;
+    margin-bottom:0;
+    margin-left: auto;
+    margin: 0 auto 0 auto;/*contiene las cuatro marges top, right, botton, left, se organiza de la misma forma el primer valor es top, right, botton y left susesivamente. Remplaza las cuatro lineas de arriba*/
+}
+
+.nav_bg{
+    background-color: var(--secundario);/*color de fondo del elemento*/
+}
+
+.imagen_hero{
+    background-image: url(../img/hero.jpg);/*agrega una imagen como fondo*/
+    background-repeat: no-repeat;/*indica que no se repita la imagen de fondo cuando la pagina se hace mas pequeña (zoom)*/
+    background-size: cover; /*sirve para acomodar la imagen a un tamaño, cover es para que ocupa el espacio disponile del div en el documento html*/
+    height: 410px; /*altura del div en el documetno HTML*/
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido_imagen_hero{
+    position: absolute;
+    background-color: rgba(0,0,0,0.6);/*se usa para general colores con transparencias los primeros tres numeros son RGB y el ultimo es la trasparencia que va de 0 a 1*/
+    width: 100%;
+    height: 100%;
+
+    display: flex;/*se utiliza el display flex para acomodar mejor los elementos en filas o columnas*/
+    flex-direction: column;/*se usa para acomodarlo en forma de columnas */
+    align-items: center;/*(solo cuando se cambia de row a column) align items se usa para alinear de forma horizontal*/
+    justify-content: center;/*(solo cuando se cambia de row a column)justify-content se usa para centrar de forma vertical*/
+}
+
+.contenido_imagen_hero h2, .contenido_imagen_hero p {
+    color: var(--blanco);
+}
+
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;/*quitar la decoracion de los textos (en este caso la lines que se encuentra abajo del enlace*/
+    text-transform: uppercase;/*uppercase se usa para poner en mayusculas las letras*/
+    font-weight: 700;
+    border-radius: 0.5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+.boton:hover{
+    cursor:pointer;/*cambiar flecha a mano*/
+}
+
+@media (min-width: 768px) {/*cuando la pantalla sea mayor a 768px entonces se motrara normal (boton pequeño), cuando sea menor se mostrara mas grande, ocupando el 90% de la pantalla*/
+    .boton{
+        width: auto;
+    }
+}
+@media (min-width:768px) { /*despues de los 768px aplique el grid para ponerlo de forma horizontal */
+    .servicios{
+        display: grid;/*Agrega las propiedades de CSS grid. Se usa para acomodar los elementos en una matriz*/
+        grid-template-columns: 1fr 1fr 1fr;/*se define tres columnas del 33.3% del elemnto que lo contiene que la clase contenedor. Tambien se puede usar 1fr( una fraccion). PAra evitar escribir tres veces el mismo numero es puede puner repeat(3,1fr) */
+        /*grid-template-rows: 200px 800px;*/
+        /*se puede usar la siguiente lines de codigo siplificada y es lo mismo
+        grid:200px 800px(rows)/300px 300px(columns)*/
+        column-gap: 2rem; /*parecido a un padding agrega una margen interna interno*/
+    }
+}
+
+.servicios ,
+.navegacion_principal,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio p{
+    line-height: 2;
+}
+
+.servicio h3{
+    color: var(--secundario);
+}
+
+.iconos{
+    height: 15rem;
+    width: 15rem;/*se crean los circulos donde iran los iconos*/
+    background-color: var(--primario);
+    border-radius: 50%;/*se usa para convertir cuadrados en circulos*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%);/*toma el valor mas pequeño entre 60 rem y el 100% del espacio de la clase padre*/
+    margin: 0 auto;/*centrar horizontalmente*/
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset{
+    border: none;
+}
+.formulario legend{
+    color: var(--primario);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+}
+
+@media (min-width: 768px) {
+    .campos_input{
+        display: grid;
+        grid-template-columns:  repeat(2,1fr);/*crea dos columnas*/
+        grid-template-rows: auto auto 20rem;/*crea tres filas dos de tamaño automatico y un de 20rem*/
+        column-gap: 1rem; /*crea sepacion entre las dos columnas*/
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4){/*si hay cuatro clases que tiene el mismo nombre puedo seleccionarlos por numero dependiendo la posicion en el documentp HTML, en este caso sera la clase: campo en la tercera pocicion o sea el campo de correo*/
+        grid-column: 1 /3 ; /*esto le indica al grid de que columna va a iniciar y que columna va a finalizar. Son tres columnas incluyendo la sepacion (colum-gap), en este caso la clase campo tipo correo estara desde la columna 1 hasta la 3*/
+    }
+      
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.campo input[type="text"],
+.campo input[type="tel"],
+.campo input[type="email"],
+.campo textarea{ /*seleccion el input con el atributo text expecifico*/
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+.enviar{ /*trae todas las propiedades de la clase boton, pero si tiene se le agrega una modificacion se tambien tiene la clase enviar en la etiqueta padre (div enviar)*/
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+    .enviar .boton{ 
+        width: auto;  
+    }
+}
+
+.footer{
+    text-align: center;
+}
+
+/*se puede crear snippets que hacen que crear codigo sea mas facil
+mq genera un media query, esto es un snippet, llendo a buscar la "paleta de comandos" y buscando snippets, dando clic en cofigurar snippets y buscadno css.json*/
